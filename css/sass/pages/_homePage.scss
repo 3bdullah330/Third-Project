@@ -36,10 +36,10 @@ main {
           }
         }
         &:nth-child(2) {
-          background-image: url("../../../imgs/landing2.jpg");
+          background-image: url("../../imgs/landing2.jpg");
         }
         &:nth-child(3) {
-          background-image: url("../../../imgs/landing3.jpg");
+          background-image: url("../../imgs/landing3.jpg");
         }
         &::after {
           content: "";
