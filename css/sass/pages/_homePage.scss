@@ -1,0 +1,406 @@
+@use "../helpers/variables" as *;
+@use "../helpers/mixins" as *;
+
+/* Start Landing */
+main {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  @include centeringElement;
+  .slider {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    .holder-imgs {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      flex-wrap: nowrap;
+      width: calc(100% * 3);
+      height: 100%;
+      .img {
+        position: relative;
+        width: 100vw;
+        background: {
+          size: cover;
+          position: center;
+          attachment: fixed;
+        }
+        &:nth-child(1) {
+          background-image: url("../../../imgs/landing1.jpg");
+          transition: 2s;
+          @include mediaXsmall(max-width) {
+            transition: 1s;
+          }
+        }
+        &:nth-child(2) {
+          background-image: url("../../../imgs/landing2.jpg");
+        }
+        &:nth-child(3) {
+          background-image: url("../../../imgs/landing3.jpg");
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: #00000059;
+        }
+      }
+    }
+    .shares {
+      @include centeringWithPosition(absolute);
+      z-index: 1;
+      width: 80%;
+      display: flex;
+      justify-content: space-between;
+      @include mediaXsmall(max-width) {
+        width: 92%;
+      }
+      .arrow {
+        cursor: pointer;
+        color: #13ecd666;
+        transition: 0.3s;
+        @include mediaXsmall(min-width) {
+          padding: 10px;
+        }
+        @include mediaXsmall(max-width) {
+          width: 13px;
+        }
+        @include deleteHover {
+          &:hover {
+            color: $greenColor;
+          }
+        }
+        &:active {
+          transform: translateY(50%);
+          color: $greenColor;
+        }
+      }
+    }
+    .bullets {
+      position: absolute;
+      bottom: 80px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      span {
+        position: relative;
+        width: 20px;
+        height: 20px;
+        border: 2px solid $greenColor;
+        border-radius: 50%;
+        cursor: pointer;
+        &:not(:last-child) {
+          margin-right: 20px;
+        }
+        &::before {
+          content: "";
+          @include centeringWithPosition(absolute);
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          opacity: 0;
+          background-color: $greenColor;
+          transition: 0.3s;
+        }
+        @include deleteHover {
+          &:hover::before {
+            opacity: 1;
+          }
+        }
+      }
+      .active::before {
+        opacity: 1;
+      }
+    }
+  }
+  .container {
+    @include centeringWithPosition(absolute);
+    width: fit-content;
+    text-align: center;
+    h1 {
+      font: {
+        size: 56px;
+        weight: 900;
+      }
+      color: $greenColor;
+      margin-bottom: 20px;
+      @include mediaXsmall(max-width) {
+        font-size: 40px;
+        margin-bottom: 5px;
+      }
+    }
+    p {
+      font-size: 20px;
+      line-height: 1.8;
+      color: #ffffffb3;
+      @include mediaXsmall(max-width) {
+        font-size: 16px;
+        padding: 12px;
+      }
+    }
+  }
+}
+/* End Landing */
+
+/* Start Section */
+.section {
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    .box {
+      width: calc((100% - 80px) / 3);
+      background-color: #ffffff;
+      box-shadow: #00000029 0px 10px 36px 0px, #0000000f 0px 0px 0px 1px;
+      transition: 0.3s;
+      @include mediaLarge(max-width) {
+        width: calc((100% - 40px) / 2);
+        &:last-child {
+          width: 100%;
+        }
+      }
+      @include mediaMedium(max-width) {
+        width: 100%;
+      }
+      @include deleteHover() {
+        &:hover {
+          transform: translateY(-10px);
+          box-shadow: #32325d40 0px 50px 100px -20px,
+            #0000004d 0px 30px 60px -30px;
+        }
+      }
+      @include box();
+      @include icon(".i");
+      @include text("h2", "p");
+    }
+  }
+}
+/* End Section */
+
+/* Start Services */
+.services {
+  .container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    .content {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-gap: 40px;
+      @include mediaMedium(max-width) {
+        grid-template-columns: 1fr;
+      }
+      .box {
+        @include box();
+        box-shadow: #00000029 0px 10px 36px 0px, #0000000f 0px 0px 0px 1px;
+        @include mediaLarge(min-width) {
+          display: flex;
+          gap: 30px;
+          text-align: left;
+        }
+        .i {
+          height: 30px;
+          font-size: 40px;
+        }
+        @include icon(".i");
+        @include text("h2", "p");
+      }
+    }
+    .holder-img {
+      position: relative;
+      z-index: 1;
+      width: 50%;
+      @include mediaXlarge(max-width) {
+        display: none;
+      }
+      &::before {
+        content: "";
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: -50px;
+        transform: translateY(-50%);
+        z-index: -1;
+        width: 100px;
+        height: 120%;
+        background-color: #2c4755;
+      }
+      img {
+        max-width: 100%;
+      }
+    }
+  }
+}
+/* End Services */
+
+/* Start Portfoli */
+.portfolio {
+  .container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    @include mediaLarge(max-width) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    @include mediaMedium(max-width) {
+      grid-template-columns: repeat(1, 1fr);
+    }
+    .box {
+      background-color: #fff;
+      border-radius: 6px;
+      box-shadow: #00000029 0px 10px 36px 0px, #0000000f 0px 0px 0px 1px;
+      overflow: hidden;
+      &:last-child {
+        @media (min-width: #{$medium}) and (max-width: #{$large}) {
+          grid-column: 1 / span 2;
+        }
+      }
+      .holder-img {
+        img {
+          max-width: 100%;
+        }
+      }
+      footer {
+        padding: 20px;
+        @include text("h2", "p");
+      }
+    }
+  }
+}
+/* End Portfoli */
+
+/* Start About */
+.about {
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    gap: 160px;
+    @include mediaLarge(max-width) {
+      flex-direction: column;
+      gap: 60px;
+      text-align: center;
+    }
+    .holder-img {
+      position: relative;
+      z-index: 1;
+      max-width: 260px;
+      &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: -30px;
+        transform: translateY(-50%);
+        z-index: -1;
+        width: 100px;
+        height: 110%;
+        background-color: #efefef;
+        @include mediaLarge(max-width) {
+          display: none;
+        }
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        top: -50px;
+        right: -140px;
+        z-index: -1;
+        width: 180px;
+        height: 290px;
+        border: solid #{$greenColor} {
+          width: 0 0 70px 85px;
+        }
+        @include mediaLarge(max-width) {
+          display: none;
+        }
+      }
+      img {
+        max-width: 100%;
+        @include mediaLarge(max-width) {
+          max-height: 74vw;
+        }
+      }
+    }
+    .text {
+      max-width: 550px;
+      p {
+        line-height: 1.7;
+        color: $darkText;
+        &:first-of-type {
+          position: relative;
+          font: {
+            size: 20px;
+            weight: 900;
+          }
+          @include mediaXsmall(max-width) {
+            font-size: 18px;
+          }
+          padding-bottom: 40px;
+          &::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50%;
+            height: 2px;
+            background-color: #{$greenColor};
+            @include mediaLarge(max-width) {
+              left: 50%;
+              transform: translateX(-50%);
+            }
+          }
+        }
+        &:last-of-type {
+          font-size: 18px;
+          margin-top: 20px;
+          line-height: 1.9;
+          @include mediaLarge(max-width) {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+/* End About */
+
+/* Start Contact */
+.contact {
+  .container {
+    @include centeringElement();
+    flex-direction: column;
+    font-weight: 900;
+    span {
+      display: block;
+      text-align: center;
+      &:first-of-type {
+        font-size: 54px;
+        color: #{$darkColor};
+        margin-bottom: 6px;
+        @include mediaLarge(max-width) {
+          font-size: 6vw;
+        }
+        @include mediaXsmall(max-width) {
+          font-size: 9vw;
+        }
+      }
+      &:last-of-type {
+        font-size: 50px;
+        color: #{$greenColor};
+        @include mediaLarge(max-width) {
+          font-size: 5vw;
+        }
+        @include mediaXsmall(max-width) {
+          font-size: 8vw;
+        }
+      }
+    }
+  }
+}
+/* End Contact */

@@ -1,0 +1,112 @@
+@use "../helpers/variables" as *;
+@use "../helpers/mixins" as *;
+
+/* Start Header */
+.mainHeader {
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  z-index: 999;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #fff;
+  box-shadow: #32325d4d 0 -10px 50px 6px, #0000001a 0px 8px 16px -8px;
+  border-bottom: 1px solid #0000001a;
+  .container {
+    height: 8vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #fff;
+    box-shadow: 0 -20px 0px 20px #fff;
+    .mainNav {
+      display: flex;
+      align-items: center;
+      transition: 0.5s;
+      position: relative;
+      @include mediaMedium(max-width) {
+        position: absolute;
+        top: 8vh;
+        left: 50%;
+        transform: translate(-50%, -110%);
+        padding: 0 20px;
+        width: 80vw;
+        background-color: #fafafa;
+        flex-direction: column;
+        align-items: start;
+        border-radius: 0 0 6px 6px;
+        z-index: -1;
+        box-shadow: 0 0 20px 8px #83838382;
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          background-color: #000;
+          box-shadow: 0 0px 15px 0.5px;
+        }
+      }
+      &.navActive {
+        transform: translateX(-50%);
+      }
+      li {
+        font-size: 18px;
+        padding: 20px;
+        position: relative;
+        @include mediaMedium(min-width) {
+          padding: 0 16px;
+        }
+        &:not(:last-child)::after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 8px;
+          height: 1px;
+          width: 86px;
+          background-color: #b7b7b7;
+          @include mediaMedium(min-width) {
+            display: none;
+          }
+        }
+        a {
+          transition: 0.3s;
+        }
+        @include deleteHover {
+          &:hover a {
+            color: $greenColor;
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+    .burger {
+      font-size: 19px;
+      color: $darkText;
+      @include mediaMedium(min-width) {
+        display: none;
+      }
+      @include button;
+      transition: 0.3s;
+      &:active {
+        transform: translateY(10px);
+        color: $greenColor;
+      }
+    }
+    .img {
+      img {
+        position: relative;
+        height: 30px;
+        right: -28px;
+        transition: 0.3s;
+        @include deleteHover {
+          &:hover {
+            opacity: 0.7;
+          }
+        }
+      }
+    }
+  }
+}
+/* End Header */

@@ -1,0 +1,73 @@
+@use "../helpers/variables" as *;
+@use "../helpers/mixins" as *;
+
+.roadblock {
+  position: relative;
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -50px;
+    left: -0%;
+    right: 0;
+    z-index: 10;
+    display: block;
+    height: 50px;
+    background-image: linear-gradient(135deg, #ffffff 25%, transparent 25%),
+      linear-gradient(225deg, #ffffff 25%, transparent 25%);
+    background-size: 50px 100%;
+    background-position: 0 0;
+  }
+  &:nth-of-type(odd) {
+    &::after {
+      background-image: linear-gradient(
+          135deg,
+          $greyBackGround 25%,
+          transparent 25%
+        ),
+        linear-gradient(225deg, $greyBackGround 25%, transparent 25%);
+    }
+  }
+}
+main.roadblock {
+  &::after {
+    bottom: 0;
+    transform: rotate(180deg);
+  }
+}
+
+.special-heading {
+  margin-bottom: 100px;
+  h1 {
+    font: {
+      size: 100px;
+      weight: 900;
+    }
+    color: #d7d7d7b3;
+    text-align: center;
+    letter-spacing: -3px;
+    @include mediaXsmall(max-width) {
+      font-size: 22vw;
+    }
+  }
+  p {
+    margin-top: -35px;
+    font-size: 20px;
+    text-align: center;
+    color: #797979;
+    @include mediaXsmall(max-width) {
+      font-size: 18px;
+      margin-top: -3vw;
+    }
+  }
+}
+
+section:nth-of-type(odd) {
+  .special-heading {
+    h1 {
+      color: #c9c9c9;
+    }
+    p {
+      color: #000000;
+    }
+  }
+}

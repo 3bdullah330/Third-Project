@@ -1,0 +1,120 @@
+@use "variables" as *;
+
+// X Small Media Queries Mixin
+@mixin mediaXsmall($value) {
+  @media ($value: $xSmall) {
+    @content;
+  }
+}
+
+// Small Media Queries
+@mixin mediaSmall($value) {
+  @media ($value: $small) {
+    @content;
+  }
+}
+
+// Medium Media Queries Mixin
+@mixin mediaMedium($value) {
+  @media ($value: $medium) {
+    @content;
+  }
+}
+
+// large Media Queries Mixin
+@mixin mediaLarge($value) {
+  @media ($value: $large) {
+    @content;
+  }
+}
+
+// X large Media Queries Mixin
+@mixin mediaXlarge($value) {
+  @media ($value: $xLarge) {
+    @content;
+  }
+}
+
+// Mixin For Button
+@mixin button() {
+  user-select: none;
+  transition: 0.3s;
+  cursor: pointer;
+  @include deleteHover {
+    &:hover {
+      color: $greenColor;
+    }
+  }
+}
+
+// Mixin For Centering Element
+@mixin centeringElement() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// Mixin For Centering Element With Position
+@mixin centeringWithPosition($position) {
+  position: #{$position};
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+// Mixin For Delete Hover In Mobile
+@mixin deleteHover() {
+  @include mediaMedium(min-width) {
+    @content;
+  }
+}
+
+// Mixin For Box
+@mixin box() {
+  text-align: center;
+  padding: 40px;
+  border-radius: 6px;
+  @include mediaLarge(max-width) {
+    padding: 30px;
+  }
+  @include mediaXsmall(max-width) {
+    padding: 20px;
+  }
+}
+
+// Mixin For Icon
+@mixin icon($i) {
+  #{$i} {
+    color: $greenColor;
+    margin-bottom: 20px;
+    @include mediaXsmall(max-width) {
+      width: 28px;
+      margin-bottom: 14px;
+    }
+  }
+}
+
+// Mixin For Text
+@mixin text($heading, $p) {
+  #{$heading} {
+    font: {
+      size: 20px;
+      weight: 900;
+    }
+    color: $darkText;
+    margin-bottom: 16px;
+    @include mediaXsmall(max-width) {
+      font-size: 18px;
+      margin-bottom: 4px;
+    }
+  }
+  #{$p} {
+    font-size: 16px;
+    line-height: 1.7;
+    color: $lightText;
+    @include mediaXsmall(max-width) {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+  }
+}

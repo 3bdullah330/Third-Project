@@ -1,0 +1,27 @@
+@use "../helpers/variables" as *;
+@use "../helpers/mixins" as *;
+
+body > {
+  footer {
+    background-color: #{$darkColor};
+    @include centeringElement();
+    min-height: 100px;
+    text-align: center;
+    & > span {
+      color: #fff;
+      letter-spacing: 1.2px;
+      padding: 10px;
+      font: {
+        size: 18px;
+        weight: 600;
+      }
+      @include mediaXsmall(max-width) {
+        font-size: 16px;
+      }
+      span {
+        font-weight: 700;
+        color: #{$greenColor};
+      }
+    }
+  }
+}

@@ -1,0 +1,39 @@
+@use "../sass/helpers/variables" as *;
+
+/* Start Global Rules */
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Cairo", sans-serif;
+  & > section {
+    position: relative;
+    padding: {
+      top: 100px;
+      bottom: 100px;
+    }
+  }
+  & > section:nth-of-type(odd) {
+    background-color: $greyBackGround;
+  }
+}
+@for $i from 1 through 6 {
+  h#{$i} {
+    margin: 0;
+  }
+}
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+  color: $darkText;
+}
+/* End Global Rules */
