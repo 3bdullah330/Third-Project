@@ -330,7 +330,7 @@ main .slider .holder-imgs .img {
   background-attachment: fixed;
 }
 main .slider .holder-imgs .img:nth-child(1) {
-  background-image: url("../../../imgs/landing1.jpg");
+  background-image: url("../../imgs/landing1.jpg");
   -webkit-transition: 2s;
   transition: 2s;
 }

@@ -29,7 +29,7 @@ main {
           attachment: fixed;
         }
         &:nth-child(1) {
-          background-image: url("../../../imgs/landing1.jpg");
+          background-image: url("../../imgs/landing1.jpg");
           transition: 2s;
           @include mediaXsmall(max-width) {
             transition: 1s;
